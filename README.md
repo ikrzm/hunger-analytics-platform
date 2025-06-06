@@ -15,8 +15,8 @@ This project investigates hunger and starvation trends using free, authoritative
 
 | Source | Type | Data Provided | API Limits |
 |--------|------|---------------|------------|
-| FAO FAOSTAT | Free | Undernourishment, Food Insecurity | 1000/hour |
-| World Bank Open Data | Free | GDP, Poverty rates | No strict limits |
+| FAO FAOSTAT | Free (No key) | Undernourishment, Food Insecurity | Public API |
+| World Bank Open Data | Free (No key) | GDP, Poverty rates | No strict limits |
 | WHO Global Health | Free | Malnutrition rates | 1000/day |
 | UN Data | Free | Health, nutrition indicators | Moderate |
 | ACLED (Free) | Freemium | Conflict events | 2500 records/year |
@@ -114,12 +114,11 @@ The platform is designed for easy expansion to new regions:
 
 Before starting development, obtain free API keys from:
 
-1. **FAO FAOSTAT**: [Register here](http://www.fao.org/faostat/en/#data)
-2. **World Bank**: [API info](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392)
-3. **WHO**: [Registration](https://www.who.int/data/gho)
+1. **FAO FAOSTAT**: ✅ **No API key needed** - Public API
+2. **World Bank**: ✅ **No API key needed** - [Open API](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392)
+3. **WHO**: [Registration required](https://www.who.int/data/gho)
 4. **ACLED**: [Free registration](https://acleddata.com/curated-data-files/)
-
-## 🤝 Contributing
+5. **UN Data**: ✅ **No API key needed** for basic access
 
 This project follows Shape Up methodology:
 - 4-week cycles
