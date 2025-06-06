@@ -1,0 +1,91 @@
+# ========================================
+# HUNGER ANALYTICS PLATFORM - Docker Compose
+# Development Environment Setup
+# ========================================
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: hunger_analytics_db
+    environment:
+      POSTGRES_USER: hunger_analytics
+      POSTGRES_PASSWORD: dev_password_123
+      POSTGRES_DB: hunger_analytics
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deployment/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - hunger_analytics_network
+    restart: unless-stopped
+
+  # Redis Cache (for later use)
+  redis:
+    image: redis:7-alpine
+    container_name: hunger_analytics_cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hunger_analytics_network
+    restart: unless-stopped
+
+  # Main Application (for development)
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: hunger_analytics_app
+    environment:
+      - DATABASE_URL=postgresql://hunger_analytics:dev_password_123@postgres:5432/hunger_analytics
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=development
+    ports:
+      - "8000:8000"  # API port
+      - "8501:8501"  # Streamlit port
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - hunger_analytics_network
+    restart: unless-stopped
+    command: python -m streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+
+  # pgAdmin for database management (optional)
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: hunger_analytics_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@hunger-analytics.local
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - hunger_analytics_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  hunger_analytics_network:
+    driver: bridge

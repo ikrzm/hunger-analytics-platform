@@ -1,0 +1,54 @@
+# ========================================
+# HUNGER ANALYTICS PLATFORM - REQUIREMENTS
+# Week 1-2 Dependencies
+# ========================================
+
+# Core Data Processing
+pandas==2.1.4
+numpy==1.25.2
+requests==2.31.0
+python-dotenv==1.0.0
+
+# Database
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.25
+
+# Data Validation & Quality
+pydantic==2.5.3
+jsonschema==4.20.0
+
+# API & Web
+urllib3==2.1.0
+beautifulsoup4==4.12.2
+
+# Date/Time handling
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Logging & Monitoring
+loguru==0.7.2
+
+# Development & Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+black==23.12.1
+flake8==7.0.0
+
+# Dashboard (Week 3)
+streamlit==1.29.0
+plotly==5.17.0
+folium==0.15.1
+
+# Analytics (Week 3)
+scipy==1.11.4
+scikit-learn==1.3.2
+
+# Deployment (Week 4)
+gunicorn==21.2.0
+docker==7.0.0
+
+# World Bank API specific
+wbdata==0.3.0
+
+# Optional: for faster data processing if needed
+# pyarrow==14.0.2

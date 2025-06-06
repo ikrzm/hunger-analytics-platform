@@ -1,0 +1,212 @@
+# ========================================
+# SUB-SAHARAN AFRICA REGION CONFIGURATION
+# ========================================
+
+region:
+  name: "Sub-Saharan Africa"
+  code: "SSA"
+  description: "African countries south of the Sahara Desert"
+  
+# Country Coverage (ISO 3166-1 alpha-3 codes)
+countries:
+  # East Africa
+  - code: "ETH"
+    name: "Ethiopia"
+    sub_region: "East Africa"
+  - code: "KEN"
+    name: "Kenya" 
+    sub_region: "East Africa"
+  - code: "TZA"
+    name: "Tanzania"
+    sub_region: "East Africa"
+  - code: "UGA"
+    name: "Uganda"
+    sub_region: "East Africa"
+  - code: "RWA"
+    name: "Rwanda"
+    sub_region: "East Africa"
+  - code: "BDI"
+    name: "Burundi"
+    sub_region: "East Africa"
+  - code: "SOM"
+    name: "Somalia"
+    sub_region: "East Africa"
+  - code: "ERI"
+    name: "Eritrea"
+    sub_region: "East Africa"
+  - code: "DJI"
+    name: "Djibouti"
+    sub_region: "East Africa"
+  - code: "SSD"
+    name: "South Sudan"
+    sub_region: "East Africa"
+    
+  # West Africa
+  - code: "NGA"
+    name: "Nigeria"
+    sub_region: "West Africa"
+  - code: "GHA"
+    name: "Ghana"
+    sub_region: "West Africa"
+  - code: "SEN"
+    name: "Senegal"
+    sub_region: "West Africa"
+  - code: "MLI"
+    name: "Mali"
+    sub_region: "West Africa"
+  - code: "BFA"
+    name: "Burkina Faso"
+    sub_region: "West Africa"
+  - code: "NER"
+    name: "Niger"
+    sub_region: "West Africa"
+  - code: "TCD"
+    name: "Chad"
+    sub_region: "West Africa"
+  - code: "CIV"
+    name: "Côte d'Ivoire"
+    sub_region: "West Africa"
+  - code: "LBR"
+    name: "Liberia"
+    sub_region: "West Africa"
+  - code: "SLE"
+    name: "Sierra Leone"
+    sub_region: "West Africa"
+  - code: "GIN"
+    name: "Guinea"
+    sub_region: "West Africa"
+  - code: "GNB"
+    name: "Guinea-Bissau"
+    sub_region: "West Africa"
+  - code: "GMB"
+    name: "Gambia"
+    sub_region: "West Africa"
+  - code: "CPV"
+    name: "Cape Verde"
+    sub_region: "West Africa"
+  - code: "TGO"
+    name: "Togo"
+    sub_region: "West Africa"
+  - code: "BEN"
+    name: "Benin"
+    sub_region: "West Africa"
+    
+  # Central Africa
+  - code: "COD"
+    name: "Democratic Republic of Congo"
+    sub_region: "Central Africa"
+  - code: "COG"
+    name: "Republic of Congo"
+    sub_region: "Central Africa"
+  - code: "CMR"
+    name: "Cameroon"
+    sub_region: "Central Africa"
+  - code: "CAF"
+    name: "Central African Republic"
+    sub_region: "Central Africa"
+  - code: "GAB"
+    name: "Gabon"
+    sub_region: "Central Africa"
+  - code: "GNQ"
+    name: "Equatorial Guinea"
+    sub_region: "Central Africa"
+  - code: "STP"
+    name: "São Tomé and Príncipe"
+    sub_region: "Central Africa"
+    
+  # Southern Africa
+  - code: "ZAF"
+    name: "South Africa"
+    sub_region: "Southern Africa"
+  - code: "ZWE"
+    name: "Zimbabwe"
+    sub_region: "Southern Africa"
+  - code: "ZMB"
+    name: "Zambia"
+    sub_region: "Southern Africa"
+  - code: "MOZ"
+    name: "Mozambique"
+    sub_region: "Southern Africa"
+  - code: "MWI"
+    name: "Malawi"
+    sub_region: "Southern Africa"
+  - code: "MDG"
+    name: "Madagascar"
+    sub_region: "Southern Africa"
+  - code: "MUS"
+    name: "Mauritius"
+    sub_region: "Southern Africa"
+  - code: "SWZ"
+    name: "Eswatini"
+    sub_region: "Southern Africa"
+  - code: "LSO"
+    name: "Lesotho"
+    sub_region: "Southern Africa"
+  - code: "BWA"
+    name: "Botswana"
+    sub_region: "Southern Africa"
+  - code: "NAM"
+    name: "Namibia"
+    sub_region: "Southern Africa"
+  - code: "AGO"
+    name: "Angola"
+    sub_region: "Southern Africa"
+
+# Data Source Specific Configurations
+data_sources:
+  fao:
+    # Key indicators for this region
+    indicators:
+      - code: "21013"  # Prevalence of undernourishment
+      - code: "21004"  # Number of undernourished people
+      - code: "21014"  # Food Insecurity Experience Scale (FIES)
+    years_range: [2000, 2023]
+    
+  world_bank:
+    indicators:
+      - code: "NY.GDP.PCAP.CD"      # GDP per capita
+      - code: "SI.POV.DDAY"        # Poverty headcount ratio
+      - code: "FP.CPI.TOTL.ZG"     # Inflation rate
+      - code: "AG.PRD.FOOD.XD"     # Food production index
+    years_range: [2000, 2022]
+    
+  who:
+    indicators:
+      - code: "NUTRITION_ANE_2"     # Prevalence of anemia
+      - code: "NUTRITION_ST_2"      # Prevalence of stunting
+      - code: "NUTRITION_WAS_2"     # Prevalence of wasting
+    years_range: [2000, 2022]
+    
+  acled:
+    event_types:
+      - "Violence against civilians"
+      - "Battles"
+      - "Riots"
+      - "Strategic developments"
+    years_range: [2018, 2024]  # Limited by free tier
+    
+# Priority Countries (for initial development/testing)
+priority_countries:
+  - "ETH"  # Ethiopia - high food insecurity
+  - "NGA"  # Nigeria - largest population
+  - "KEN"  # Kenya - good data availability
+  - "ZAF"  # South Africa - economic hub
+  - "COD"  # DRC - conflict affected
+
+# Dashboard Configuration
+dashboard:
+  default_view: "regional_overview"
+  map_center: [-2.0, 25.0]  # Central Africa coordinates
+  map_zoom: 3
+  primary_indicators:
+    - "prevalence_undernourishment"
+    - "gdp_per_capita"
+    - "conflict_events"
+  
+# Data Quality Expectations
+data_quality:
+  minimum_countries_with_data: 30
+  minimum_years_coverage: 10
+  required_indicators:
+    - "prevalence_undernourishment"
+    - "gdp_per_capita"
