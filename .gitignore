@@ -116,3 +116,5 @@ tmp/
 # Local development configs
 docker-compose.override.yml
 local_config.yaml
+
+.env.example
